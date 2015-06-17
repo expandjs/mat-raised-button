@@ -1,0 +1,34 @@
+<link rel="import" href="../mat-demo/mat-demo.html">
+<link rel="import" href="../mat-icons/action-icons.html">
+<link rel="import" href="../mat-icons/communication-icons.html">
+<link rel="import" href="../mat-icons/content-icons.html">
+<link rel="import" href="../mat-tooltip/mat-tooltip.html">
+<link rel="import" href="mat-raised-button.html">
+
+<dom-module id="mat-raised-button-demo">
+
+    <template>
+        <mat-demo label="mat-raised-button">
+
+            <div class="demo-title">Default</div>
+            <mat-raised-button label="Button"></mat-raised-button>
+            <mat-raised-button label="Colored" background="deep-orange-600"></mat-raised-button>
+            <mat-raised-button label="Disabled" disabled></mat-raised-button>
+
+            <div class="demo-title">Custom</div>
+            <mat-raised-button label="Icon" icon="action:favorite"></mat-raised-button>
+            <mat-raised-button label="Link" icon="content:link" href="http://expandjs.com" target="_blank"></mat-raised-button>
+            <mat-tooltip tip="I am disabled"><mat-raised-button label="Tooltip" icon="communication:message" disabled></mat-raised-button></mat-tooltip>
+
+        </mat-demo>
+    </template>
+
+    <script>
+        Polymer({
+
+            // ELEMENT
+            is: 'mat-raised-button-demo'
+        });
+    </script>
+
+</dom-module>
