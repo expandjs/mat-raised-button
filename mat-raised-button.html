@@ -16,22 +16,22 @@ This element is used to display a material raised button.
 @homepage http://expandjs.com/elements/mat-raised-button
 @demo http://expandjs.com/demo/mat-raised-button
 
-@behavior xp-anchor-behavior http://expandjs.com/elements/xp-anchor-behavior
-@behavior xp-pressed-behavior http://expandjs.com/elements/xp-pressed-behavior
-@behavior xp-referral-behavior http://expandjs.com/elements/xp-referral-behavior
+@behavior xp-anchor-behavior /bower_components/xp-anchor-behavior/xp-anchor-behavior.html
+@behavior xp-pressed-behavior /bower_components/xp-pressed-behavior/xp-pressed-behavior.html
+@behavior xp-referral-behavior /bower_components/xp-referral-behavior/xp-referral-behavior.html
 
 @dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.4
-@dependency mat-icon ExpandJS/mat-icon#0.9.4
-@dependency mat-paper ExpandJS/mat-paper#0.9.4
-@dependency mat-ripple ExpandJS/mat-ripple#0.9.4
-@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.9.4
-@dependency xp-pressed-behavior ExpandJS/xp-pressed-behavior#0.9.4
-@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.4
+@dependency expandjs ExpandJS/expandjs#0.9.5
+@dependency mat-icon ExpandJS/mat-icon#0.9.5
+@dependency mat-paper ExpandJS/mat-paper#0.9.5
+@dependency mat-ripple ExpandJS/mat-ripple#0.9.5
+@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.9.5
+@dependency xp-pressed-behavior ExpandJS/xp-pressed-behavior#0.9.5
+@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.5
 
-@devDependency mat-demo ExpandJS/mat-demo#0.9.4
-@devDependency mat-icons ExpandJS/mat-icons#0.9.4
-@devDependency mat-tooltip ExpandJS/mat-tooltip#0.9.4
+@devDependency mat-demo ExpandJS/mat-demo#0.9.5
+@devDependency mat-icons ExpandJS/mat-icons#0.9.5
+@devDependency mat-tooltip ExpandJS/mat-tooltip#0.9.5
 -->
 
 <link rel="import" href="../polymer/polymer.html">
@@ -73,6 +73,7 @@ This element is used to display a material raised button.
         :host #matRaisedButtonAnchor {
             display: block;
             height: 100%;
+            outline: 0;
             overflow: hidden;
             text-decoration: none;
         }
@@ -114,7 +115,7 @@ This element is used to display a material raised button.
 
     <template>
         <mat-paper id="matRaisedButtonWrapper" background="[[background]]" disabled="[[disabled]]" z="2" pressable>
-            <a id="matRaisedButtonAnchor">
+            <a id="matRaisedButtonAnchor" tabindex="-1">
                 <div id="matRaisedButtonMain">
                     <mat-icon id="matRaisedButtonIcon" disabled="[[disabled]]" name="[[icon]]" src="[[iconSrc]]"></mat-icon>
                     <mat-ink id="matRaisedButtonLabel" disabled="[[disabled]]">{{label}}</mat-ink>
