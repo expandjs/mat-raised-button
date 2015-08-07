@@ -7,7 +7,35 @@ The complete set of contributors may be found at https://expandjs.github.io/CONT
 -->
 
 <!--
-This element is used to display a material raised button.
+An element used to display a [Material Design raised button](http://www.google.com/design/spec/components/buttons.html#buttons-flat-raised-buttons).
+
+```html
+<mat-raised-button label="Click me!"></mat-raised-button>
+```
+
+It can be used as a trigger for other actions...
+
+```html
+<mat-raised-button label="Show dialog" target="myDialog" toggles-target></mat-raised-button>
+<mat-dialog id="myDialog"></mat-dialog>
+```
+
+...or it can behave as a classic anchor tag.
+
+```html
+<mat-raised-button label="GitHub" href="https://github.com/ExpandJS" target="_blank"></mat-raised-button>
+```
+
+---
+
+## Styling
+
+The button's background color can be changed accordingly to the
+[Material Design palette](http://www.google.com/design/spec/style/color.html#color-color-palette).
+
+```html
+<mat-raised-button background="red" label="Red button"></mat-raised-button>
+```
 
 @element mat-raised-button
 @description A custom element used to display a Material Design raised button
@@ -22,17 +50,17 @@ This element is used to display a material raised button.
 @behavior xp-referral-behavior /bower_components/xp-referral-behavior/xp-referral-behavior.html
 
 @dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.5
-@dependency mat-icon ExpandJS/mat-icon#0.9.5
-@dependency mat-paper ExpandJS/mat-paper#0.9.5
-@dependency mat-ripple ExpandJS/mat-ripple#0.9.5
-@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.9.5
-@dependency xp-pressed-behavior ExpandJS/xp-pressed-behavior#0.9.5
-@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.5
+@dependency expandjs ExpandJS/expandjs#0.9.6
+@dependency mat-icon ExpandJS/mat-icon#0.9.6
+@dependency mat-paper ExpandJS/mat-paper#0.9.6
+@dependency mat-ripple ExpandJS/mat-ripple#0.9.6
+@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.9.6
+@dependency xp-pressed-behavior ExpandJS/xp-pressed-behavior#0.9.6
+@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.6
 
-@devDependency mat-demo ExpandJS/mat-demo#0.9.5
-@devDependency mat-icons ExpandJS/mat-icons#0.9.5
-@devDependency mat-tooltip ExpandJS/mat-tooltip#0.9.5
+@devDependency mat-demo ExpandJS/mat-demo#0.9.6
+@devDependency mat-icons ExpandJS/mat-icons#0.9.6
+@devDependency mat-tooltip ExpandJS/mat-tooltip#0.9.6
 -->
 
 <link rel="import" href="../polymer/polymer.html">
