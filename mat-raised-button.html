@@ -74,75 +74,74 @@ The button's background color can be changed accordingly to the
 
 <dom-module id="mat-raised-button">
 
-    <link rel="import" type="css" href="../xp-pressed-behavior/xp-pressed-behavior.css">
-
-    <style>
-        :host {
-            @apply(--mat-font-button);
-            border-radius: 2px;
-            height: 36px;
-            margin: 6px 0;
-            text-align: center;
-        }
-
-        :host([empty]) {
-            display: none !important;
-        }
-
-        :host([empty-label]) {
-            width: 36px;
-        }
-
-        :host #matRaisedButtonWrapper {
-            border-radius: inherit;
-            height: 100%;
-            overflow: visible;
-        }
-
-        :host #matRaisedButtonAnchor {
-            display: block;
-            height: 100%;
-            outline: 0;
-            overflow: hidden;
-            text-decoration: none;
-        }
-
-        :host #matRaisedButtonAnchor:after {
-            bottom: -6px;
-            content: "";
-            left: -4px;
-            position: absolute;
-            right: -4px;
-            top: -6px;
-        }
-
-        :host #matRaisedButtonAnchor[href]:hover {
-            text-decoration: underline;
-        }
-
-        :host #matRaisedButtonMain {
-            padding: 8px 12px;
-            position: relative;
-        }
-
-        :host #matRaisedButtonIcon {
-            left: 12px;
-            margin-top: -2px;
-            position: absolute;
-        }
-
-        :host([empty-label]) #matRaisedButtonIcon {
-            left: auto;
-            margin: -8px -6px;
-            position: relative;
-        }
-
-        :host #matRaisedButtonIcon:not([empty]) + #matRaisedButtonLabel {
-            margin-left: 36px;
-        }
-    </style>
-
     <template>
+
+        <style include="xp-pressed-styles">
+            :host {
+                @apply(--mat-font-button);
+                border-radius: 2px;
+                height: 36px;
+                margin: 6px 0;
+                text-align: center;
+            }
+
+            :host([empty]) {
+                display: none !important;
+            }
+
+            :host([empty-label]) {
+                width: 36px;
+            }
+
+            :host #matRaisedButtonWrapper {
+                border-radius: inherit;
+                height: 100%;
+                overflow: visible;
+            }
+
+            :host #matRaisedButtonAnchor {
+                display: block;
+                height: 100%;
+                outline: 0;
+                overflow: hidden;
+                text-decoration: none;
+            }
+
+            :host #matRaisedButtonAnchor:after {
+                bottom: -6px;
+                content: "";
+                left: -4px;
+                position: absolute;
+                right: -4px;
+                top: -6px;
+            }
+
+            :host #matRaisedButtonAnchor[href]:hover {
+                text-decoration: underline;
+            }
+
+            :host #matRaisedButtonMain {
+                padding: 8px 12px;
+                position: relative;
+            }
+
+            :host #matRaisedButtonIcon {
+                left: 12px;
+                margin-top: -2px;
+                position: absolute;
+            }
+
+            :host([empty-label]) #matRaisedButtonIcon {
+                left: auto;
+                margin: -8px -6px;
+                position: relative;
+            }
+
+            :host #matRaisedButtonIcon:not([empty]) + #matRaisedButtonLabel {
+                margin-left: 36px;
+            }
+        </style>
+
         <mat-paper id="matRaisedButtonWrapper" background="[[background]]" disabled="[[disabled]]" z="2" pressable>
             <a id="matRaisedButtonAnchor" tabindex="-1">
                 <div id="matRaisedButtonMain">
@@ -152,6 +151,7 @@ The button's background color can be changed accordingly to the
             </a>
             <mat-ripple context="[[self]]" id="matRaisedButtonRipple"></mat-ripple>
         </mat-paper>
+
     </template>
 
     <script>
