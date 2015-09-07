@@ -49,7 +49,7 @@ The button's background color can be changed accordingly to the
 @behavior xp-pressed-behavior /bower_components/xp-pressed-behavior/xp-pressed-behavior.html
 @behavior xp-referral-behavior /bower_components/xp-referral-behavior/xp-referral-behavior.html
 
-@dependency polymer Polymer/polymer#^1.1.0
+@dependency polymer Polymer/polymer#^1.0.0
 @dependency expandjs ExpandJS/expandjs#0.9.8
 @dependency mat-icon ExpandJS/mat-icon#0.9.8
 @dependency mat-paper ExpandJS/mat-paper#0.9.8
@@ -76,9 +76,7 @@ The button's background color can be changed accordingly to the
 
     <template>
 
-        <style include="xp-pressed-styles"></style>
-
-        <style>
+        <style include="xp-pressed-styles">
             :host {
                 @apply(--mat-font-button);
                 border-radius: 2px;
