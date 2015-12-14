@@ -7,7 +7,7 @@ The complete set of contributors may be found at https://expandjs.github.io/CONT
 -->
 
 <!--
-An element used to display a [Material Design raised button](http://www.google.com/design/spec/components/buttons.html#buttons-flat-raised-buttons).
+A custom element used to display a [Material Design raised button](http://www.google.com/design/spec/components/buttons.html#buttons-flat-raised-buttons).
 
 ```html
 <mat-raised-button label="Click me!"></mat-raised-button>
@@ -39,120 +39,106 @@ The button's background color can be changed accordingly to the
 
 @element mat-raised-button
 @description A custom element used to display a Material Design raised button
-@keywords material design, material raised button, web app, html5, expandjs, web-components
+@keywords material design, material button, expandjs, web app, custom elements, web-components
 @group contents
+@hot
+
 @homepage http://expandjs.com/elements/mat-raised-button
 @repository https://github.com/ExpandJS/mat-raised-button
 @demo http://expandjs.com/demo/mat-raised-button
 
 @behavior xp-anchor-behavior /bower_components/xp-anchor-behavior/xp-anchor-behavior.html
-@behavior xp-pressed-behavior /bower_components/xp-pressed-behavior/xp-pressed-behavior.html
-@behavior xp-referral-behavior /bower_components/xp-referral-behavior/xp-referral-behavior.html
+@behavior xp-overlay-injector /bower_components/xp-overlay/xp-overlay-injector.html
+@behavior mat-pressed-paper-behavior /bower_components/mat-pressed-behavior/mat-pressed-paper-behavior.html
 
 @dependency polymer Polymer/polymer#^1.0.0
-@dependency expandjs ExpandJS/expandjs#0.9.11
-@dependency mat-icon ExpandJS/mat-icon#0.9.11
-@dependency mat-paper ExpandJS/mat-paper#0.9.11
-@dependency mat-ripple ExpandJS/mat-ripple#0.9.11
-@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.9.11
-@dependency xp-pressed-behavior ExpandJS/xp-pressed-behavior#0.9.11
-@dependency xp-referral-behavior ExpandJS/xp-referral-behavior#0.9.11
+@dependency expandjs ExpandJS/expandjs#0.10.0
+@dependency iron-flex-layout PolymerElements/iron-flex-layout#^1.0.0
+@dependency mat-icon ExpandJS/mat-icon#0.10.0
+@dependency mat-pressed-behavior ExpandJS/mat-pressed-behavior#0.10.0
+@dependency mat-typography ExpandJS/mat-typography#0.10.0
+@dependency xp-anchor-behavior ExpandJS/xp-anchor-behavior#0.10.0
+@dependency xp-overlay ExpandJS/xp-overlay#0.10.0
 
-@devDependency mat-demo ExpandJS/mat-demo#0.9.11
-@devDependency mat-icons ExpandJS/mat-icons#0.9.11
-@devDependency mat-tooltip ExpandJS/mat-tooltip#0.9.11
+@devDependency mat-demo ExpandJS/mat-demo#0.10.0
 -->
 
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../expandjs/expandjs.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../mat-icon/mat-icon.html">
-<link rel="import" href="../mat-paper/mat-paper.html">
-<link rel="import" href="../mat-ripple/mat-ripple.html">
+<link rel="import" href="../mat-pressed-behavior/mat-pressed-paper-behavior.html">
+<link rel="import" href="../mat-pressed-behavior/mat-pressed-paper-styles.html">
+<link rel="import" href="../mat-typography/mat-typography.html">
 <link rel="import" href="../xp-anchor-behavior/xp-anchor-behavior.html">
-<link rel="import" href="../xp-pressed-behavior/xp-pressed-behavior.html">
-<link rel="import" href="../xp-referral-behavior/xp-referral-behavior.html">
+<link rel="import" href="../xp-anchor-behavior/xp-anchor-styles.html">
+<link rel="import" href="../xp-overlay/xp-overlay-injector.html">
 
 <dom-module id="mat-raised-button">
 
-    <template>
+    <template strip-whitespace>
 
-        <style include="xp-pressed-styles"></style>
+        <style include="xp-anchor-styles"></style>
+        <style include="mat-pressed-paper-styles"></style>
 
         <style>
             :host {
                 @apply(--mat-font-button);
                 border-radius: 2px;
+                display: inline-block;
                 height: 36px;
                 margin: 6px 0;
+                min-width: 36px;
                 text-align: center;
             }
 
-            :host([empty]) {
-                display: none !important;
+            :host .anchor:after {
+                min-height: 48px;
+                min-width: 44px;
+                width: calc(100% + 8px);
             }
 
-            :host([empty-label]) {
-                width: 36px;
-            }
-
-            :host #matRaisedButtonWrapper {
-                border-radius: inherit;
+            :host .main {
+                @apply(--layout-horizontal);
+                @apply(--layout-center);
                 height: 100%;
-                overflow: visible;
+                padding: 0 12px;
             }
 
-            :host #matRaisedButtonAnchor {
-                display: block;
-                height: 100%;
-                outline: 0;
-                overflow: hidden;
-                text-decoration: none;
-            }
-
-            :host #matRaisedButtonAnchor:after {
-                bottom: -6px;
-                content: "";
-                left: -4px;
-                position: absolute;
-                right: -4px;
-                top: -6px;
-            }
-
-            :host #matRaisedButtonAnchor[href]:hover {
-                text-decoration: underline;
-            }
-
-            :host #matRaisedButtonMain {
-                padding: 8px 12px;
-                position: relative;
-            }
-
-            :host #matRaisedButtonIcon {
+            :host([label]:not([label=""])) .icon {
                 left: 12px;
-                margin-top: -2px;
                 position: absolute;
+                top: 50%;
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
             }
 
-            :host([empty-label]) #matRaisedButtonIcon {
-                left: auto;
-                margin: -8px -6px;
-                position: relative;
+            :host([label=""]) .icon,
+            :host(:not([label])) .icon {
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
             }
 
-            :host #matRaisedButtonIcon:not([empty]) + #matRaisedButtonLabel {
+            :host .icon:not([empty]) ~ .label {
                 margin-left: 36px;
+            }
+
+            :host([label=""]) .label,
+            :host(:not([label])) .label {
+                display: none !important;
             }
         </style>
 
-        <mat-paper id="matRaisedButtonWrapper" background="[[background]]" disabled="[[disabled]]" z="2" pressable>
-            <a id="matRaisedButtonAnchor" tabindex="-1">
-                <div id="matRaisedButtonMain">
-                    <mat-icon id="matRaisedButtonIcon" disabled="[[disabled]]" name="[[icon]]" src="[[iconSrc]]"></mat-icon>
-                    <mat-ink id="matRaisedButtonLabel" disabled="[[disabled]]">{{label}}</mat-ink>
-                </div>
-            </a>
-            <mat-ripple context="[[self]]" id="matRaisedButtonRipple"></mat-ripple>
-        </mat-paper>
+        <a class="anchor" tabindex="-1" on-click="_anchorHandler">
+            <div class="main">
+                <mat-icon class="icon" disabled="[[disabled]]" name="[[icon]]" src="[[iconSrc]]"></mat-icon>
+                <div class="label">[[label]]</div>
+            </div>
+        </a>
+
+        <div class="ripple-ground" active$="[[active]]"></div>
+        <div class="ripple-waves"></div>
 
     </template>
 
@@ -165,72 +151,14 @@ The button's background color can be changed accordingly to the
             // BEHAVIORS
             behaviors: [
                 Polymer.XPAnchorBehavior,
-                Polymer.XPPressedBehavior,
-                Polymer.XPReferralBehavior
+                Polymer.XPOverlayInjector,
+                Polymer.MatPressedPaperBehavior
             ],
 
             /*********************************************************************/
 
             // PROPERTIES
             properties: {
-
-                /**
-                 * The paper's background color.
-                 *
-                 * @attribute background
-                 * @type string
-                 */
-                background: {
-                    reflectToAttribute: true,
-                    type: String,
-                    value: null
-                },
-
-                /**
-                 * The element's data.
-                 *
-                 * @attribute data
-                 * @type *
-                 * @notifies
-                 */
-                data: {
-                    notify: true,
-                    value: null
-                },
-
-                /**
-                 * If set to true, the element is hidden.
-                 *
-                 * @attribute empty
-                 * @type boolean
-                 * @default true
-                 * @notifies
-                 * @readonly
-                 */
-                empty: {
-                    computed: '_computeEmpty(icon, iconSrc, label)',
-                    notify: true,
-                    reflectToAttribute: true,
-                    type: Boolean,
-                    value: true
-                },
-
-                /**
-                 * If set to true, the label is hidden.
-                 *
-                 * @attribute empty-label
-                 * @type boolean
-                 * @default true
-                 * @notifies
-                 * @readonly
-                 */
-                emptyLabel: {
-                    computed: '_computeEmptyLabel(label)',
-                    notify: true,
-                    reflectToAttribute: true,
-                    type: Boolean,
-                    value: true
-                },
 
                 /**
                  * The button's icon.
@@ -240,8 +168,7 @@ The button's background color can be changed accordingly to the
                  */
                 icon: {
                     reflectToAttribute: true,
-                    type: String,
-                    value: null
+                    type: String
                 },
 
                 /**
@@ -252,8 +179,7 @@ The button's background color can be changed accordingly to the
                  */
                 iconSrc: {
                     reflectToAttribute: true,
-                    type: String,
-                    value: null
+                    type: String
                 },
 
                 /**
@@ -264,28 +190,32 @@ The button's background color can be changed accordingly to the
                  */
                 label: {
                     reflectToAttribute: true,
-                    type: String,
-                    value: null
+                    type: String
+                },
+
+                /**
+                 * The button's z-axis position.
+                 *
+                 * @attribute z
+                 * @type number
+                 * @default 2
+                 * @notifies
+                 */
+                z: {
+                    notify: true,
+                    reflectToAttribute: true,
+                    type: Number,
+                    value: 2
                 }
             },
 
             /*********************************************************************/
 
-            // COMPUTER
-            _computeEmpty: function (icon, iconSrc, label) {
-                return !icon && !iconSrc && !label;
-            },
-
-            // COMPUTER
-            _computeEmptyLabel: function (label) {
-                return !label;
-            },
-
-            /*********************************************************************/
-
             // LISTENER
-            ready: function () {
-                this._setAnchor(this.$.matRaisedButtonAnchor);
+            created: function () {
+
+                // Classifying
+                this.classList.add('button');
             }
         });
     </script>
