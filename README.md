@@ -1,3 +1,4 @@
 # mat-raised-button
 
-See the [`documentation page`](http://expandjs.com/elements/mat-raised-button) for more information.
+
+This repository has been merged into [`mat-elements`](https://github.com/expandjs/max-elements).
